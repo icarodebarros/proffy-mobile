@@ -4,7 +4,7 @@ import { BorderlessButton, RectButton } from 'react-native-gesture-handler';
 import { Feather } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-community/async-storage';
 
-import api from '../../services/api';
+import ClassesService, { TeacherFilter } from '../../services/classes.service';
 
 import PageHeader from '../../components/PageHeader';
 import TeacherItem, { Teacher } from '../../components/TeacherItem';
@@ -41,15 +41,15 @@ function TeacherList(): JSX.Element {
     async function handleFiltersSubmit() {
         loadFavorites();
 
-        const response = await api.get('classes', {
-            params: {
-                subject,
-                week_day,
-                time,                
-            }
-        });
+        const filter: TeacherFilter = {
+            subject,
+            week_day,
+            time, 
+        };
         
-        setTeachers(response.data);
+        const teachersFound = await ClassesService.searchTeachers(filter);
+        
+        setTeachers(teachersFound);
         setIsFiltersVisible(false);
     }
 

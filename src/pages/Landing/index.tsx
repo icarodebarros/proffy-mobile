@@ -3,7 +3,7 @@ import { View, Image, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { RectButton } from 'react-native-gesture-handler';
 
-import api from '../../services/api';
+import ConnectionService from '../../services/connection.service';
 
 import styles from './styles';
 
@@ -14,15 +14,11 @@ import heartIcon from '../../assets/images/icons/heart.png';
 
 function Landing(): JSX.Element {
     const { navigate } = useNavigation();
-    const [ totalConnections, setTotalconnections ] = useState(0);
+    const [ totalConnections, setTotalConnections ] = useState(0);
 
     useEffect(() => {
-        api.get('connections')
-            .then(res => {
-                const { total } = res.data;
-
-                setTotalconnections(total);
-            });
+        ConnectionService.getTotalConnections()
+            .then((total: number) => setTotalConnections(total));
     }, []);
 
     function handleNavigateToGiveClassesPage() {
