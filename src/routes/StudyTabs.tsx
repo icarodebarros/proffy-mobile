@@ -3,6 +3,8 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 
+import { PAGES } from '../pages/pages';
+
 import TeacherList from '../pages/TeacherList';
 import Favorites from '../pages/Favorites';
 
@@ -45,7 +47,7 @@ function StudyTabs(): JSX.Element {
             }}
         >
             <Screen 
-                name="TeacherList"
+                name={PAGES.TEACHER_LIST}
                 component={TeacherList}
                 options={{
                     tabBarLabel: 'Proffys',
@@ -55,7 +57,7 @@ function StudyTabs(): JSX.Element {
                 }}
             />
             <Screen
-                name="Favorites"
+                name={PAGES.FAVORITES}
                 component={Favorites}
                 options={{
                     tabBarLabel: 'Favoritos',

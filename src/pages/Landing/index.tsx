@@ -4,13 +4,14 @@ import { useNavigation } from '@react-navigation/native';
 import { RectButton } from 'react-native-gesture-handler';
 
 import ConnectionService from '../../services/connection.service';
-
-import styles from './styles';
+import { PAGES } from '../pages';
 
 import landingImg from '../../assets/images/landing.png';
 import studyIcon from '../../assets/images/icons/study.png';
 import giveClassesIcon from '../../assets/images/icons/give-classes.png';
 import heartIcon from '../../assets/images/icons/heart.png';
+
+import styles from './styles';
 
 function Landing(): JSX.Element {
     const { navigate } = useNavigation();
@@ -22,11 +23,11 @@ function Landing(): JSX.Element {
     }, []);
 
     function handleNavigateToGiveClassesPage() {
-        navigate('GiveClasses');
+        navigate(PAGES.GIVE_CLASSES);
     }
 
     function handleNavigateToStudyPages() {
-        navigate('Study');
+        navigate(PAGES.STUDY);
     }
 
     return (
