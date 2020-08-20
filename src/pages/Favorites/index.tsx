@@ -8,7 +8,7 @@ import TeacherItem, { Teacher } from '../../components/TeacherItem';
 
 import styles from './styles';
 
-function Favorites() {
+function Favorites(): JSX.Element {
     const [favorites, setFavorites] = useState<Teacher[]>([]);
 
     useFocusEffect(loadFavorites);

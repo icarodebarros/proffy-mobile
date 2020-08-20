@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
@@ -7,7 +8,13 @@ import Favorites from '../pages/Favorites';
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
-function StudyTabs() {
+interface tabBarIconProperties {
+    color: string;
+    size: number;
+    focused: boolean;
+}
+
+function StudyTabs(): JSX.Element {
     return (
         <Navigator
             tabBarOptions={{
@@ -42,7 +49,7 @@ function StudyTabs() {
                 component={TeacherList}
                 options={{
                     tabBarLabel: 'Proffys',
-                    tabBarIcon: ({ color, size, focused }) => {
+                    tabBarIcon: ({ color, size, focused }: tabBarIconProperties) => {
                         return <Ionicons name='ios-easel' size={size} color={focused ?  '#8257E5' : color} />;
                     }
                 }}
@@ -52,7 +59,7 @@ function StudyTabs() {
                 component={Favorites}
                 options={{
                     tabBarLabel: 'Favoritos',
-                    tabBarIcon: ({ color, size, focused }) => {
+                    tabBarIcon: ({ color, size, focused }: tabBarIconProperties) => {
                         return <Ionicons name='ios-heart' size={size} color={focused ?  '#8257E5' : color} />;
                     }
                 }}

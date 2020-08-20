@@ -12,7 +12,7 @@ import studyIcon from '../../assets/images/icons/study.png';
 import giveClassesIcon from '../../assets/images/icons/give-classes.png';
 import heartIcon from '../../assets/images/icons/heart.png';
 
-function Landing() {
+function Landing(): JSX.Element {
     const { navigate } = useNavigation();
     const [ totalConnections, setTotalconnections ] = useState(0);
 

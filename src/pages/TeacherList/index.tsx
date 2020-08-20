@@ -12,7 +12,7 @@ import TeacherItem, { Teacher } from '../../components/TeacherItem';
 import styles from './styles';
 import { useFocusEffect } from '@react-navigation/native';
 
-function TeacherList() {
+function TeacherList(): JSX.Element {
     const [teachers, setTeachers] = useState<Teacher[]>([]);
     const [favorites, setFavorites] = useState<number[]>([]);
     const [isFiltersVisible, setIsFiltersVisible] = useState(false);

@@ -7,7 +7,7 @@ import giveClassesBGImage from '../../assets/images/give-classes-background.png'
 import styles from './styles';
 import { useNavigation } from '@react-navigation/native';
 
-function GiveClasses() {
+function GiveClasses(): JSX.Element {
     const { goBack } = useNavigation();
 
     function handleNavigateBack() {

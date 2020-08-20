@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, PropsWithChildren } from 'react';
 import { View, Image, Text } from 'react-native';
 import { BorderlessButton } from 'react-native-gesture-handler';
 
@@ -13,7 +13,7 @@ interface PageHeaderProps {
     headerRight?: ReactNode;
 }
 
-const PageHeader: React.FC<PageHeaderProps> = ({ title, headerRight, children }) => {
+const PageHeader: React.FC<PageHeaderProps> = ({ title, headerRight, children }: PropsWithChildren<PageHeaderProps>) => {
 
     const { navigate } = useNavigation();
     
@@ -40,6 +40,6 @@ const PageHeader: React.FC<PageHeaderProps> = ({ title, headerRight, children })
             {children}
         </View>
     );
-}
+};
 
 export default PageHeader;

@@ -26,7 +26,7 @@ interface TeacherItemProps {
     favorited: boolean,
 }
 
-const TeacherItem: React.FC<TeacherItemProps> = ({ teacher, favorited }) => {
+const TeacherItem: React.FC<TeacherItemProps> = ({ teacher, favorited }: TeacherItemProps) => {
     const [isFavorited, setIsFavorited] = useState(favorited);
 
     function handleLinkToWhatsapp() {
@@ -34,7 +34,7 @@ const TeacherItem: React.FC<TeacherItemProps> = ({ teacher, favorited }) => {
             user_id: teacher.id,
         });
 
-        Linking.openURL(`whatsapp://send?phone=${teacher.whatsapp}`)
+        Linking.openURL(`whatsapp://send?phone=${teacher.whatsapp}`);
     }
 
     async function handleToggleFavorites() {
@@ -99,6 +99,6 @@ const TeacherItem: React.FC<TeacherItemProps> = ({ teacher, favorited }) => {
             </View>
         </View>
     );
-}
+};
 
 export default TeacherItem;
