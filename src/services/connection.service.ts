@@ -1,6 +1,8 @@
 import api from './api';
 import { AxiosResponse } from 'axios';
 
+import { environment } from '../environments/environments';
+
 interface totalConnections {
     total: number;
 }
@@ -9,7 +11,7 @@ interface newConnection {
     user_id: number;
 }
 
-const path = '/connections';
+const path = environment.apiPathConnections;
 
 export default class ConnectionService {
 

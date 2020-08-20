@@ -1,6 +1,7 @@
 import api from './api';
 
 import { Teacher } from '../components/TeacherItem';
+import { environment } from '../environments/environments';
 
 export interface TeacherFilter {
     subject: string;
@@ -8,7 +9,7 @@ export interface TeacherFilter {
     time: string;
 }
 
-const path = '/classes';
+const path = environment.apiPathClasses;
 
 export default class ClassesService {
 
