@@ -37,15 +37,14 @@ const styles = StyleSheet.create({
         marginTop: 4,
         marginBottom: 16,
     },
-
-    input: {
-        height: 54,
+        
+    timeButton: {
         backgroundColor: '#FFF',
+        height: 56,
         borderRadius: 8,
-        justifyContent: 'center',
-        paddingHorizontal: 16,
-        marginTop: 4,
-        marginBottom: 16,
+        flexDirection: 'row',
+        justifyContent: 'space-evenly',
+        alignItems: 'center',
     },
 
     submitButton: {

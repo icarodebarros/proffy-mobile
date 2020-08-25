@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { View, ScrollView, Text, Picker, TextInput } from 'react-native';
+import { View, ScrollView, Text, Picker } from 'react-native';
 import { BorderlessButton, RectButton } from 'react-native-gesture-handler';
 import { Feather } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-community/async-storage';
 import { useFocusEffect } from '@react-navigation/native';
+import RNDateTimePicker, { Event } from '@react-native-community/datetimepicker';
 
 import ClassesService, { TeacherFilter } from '../../services/classes.service';
 
@@ -20,6 +21,24 @@ function TeacherList(): JSX.Element {
     const [subject, setSubject] = useState('');
     const [week_day, setWeekDay] = useState('');
     const [time, setTime] = useState('');
+    
+    const [show, setShow] = useState(false);
+    const [date, setDate] = useState(new Date());
+
+    function onChangeTime(_event: Event, selectedDate?: Date) {
+        const currentDate = selectedDate || date;
+        setShow(false);
+
+        setDate(currentDate);
+        const strTime = currentDate.getHours() + ':' + ('0'+ currentDate.getMinutes()).slice(-2);
+        console.log(strTime);
+        setTime(strTime);
+    }
+
+    function openTimer() {
+        setShow(true);
+        setTimeout(() => setShow(false), 100); // Bugfix
+    }
 
     function loadFavorites() {
         AsyncStorage.getItem('favorites')
@@ -109,13 +128,19 @@ function TeacherList(): JSX.Element {
 
                             <View style={styles.inputBlock}>
                                 <Text style={styles.label}>Horário</Text>
-                                <TextInput 
-                                    style={styles.input}
-                                    value={time}
-                                    onChangeText={text => setTime(text)}
-                                    placeholder="Qual o horário?" 
-                                    placeholderTextColor="#C1BCCC"
-                                />
+                                {show && (
+                                    <RNDateTimePicker
+                                        mode="time"
+                                        display="clock"
+                                        value={date}
+                                        is24Hour={true}
+                                        onChange={onChangeTime}
+                                    />
+                                )}
+                                <RectButton onPress={() => openTimer()} style={styles.timeButton}>
+                                    { time.length > 0 && <Text>{time}</Text>}
+                                    <Feather name="clock" size={20} color="#000" />
+                                </RectButton>
                             </View>
                         </View>
                         <RectButton onPress={handleFiltersSubmit} style={styles.submitButton}>
