@@ -28,6 +28,16 @@ const styles = StyleSheet.create({
         width: '48%',
     },
 
+    picker: {
+        height: 54,
+        backgroundColor: '#FFF',
+        borderRadius: 8,
+        justifyContent: 'center',
+        paddingHorizontal: 8,
+        marginTop: 4,
+        marginBottom: 16,
+    },
+
     input: {
         height: 54,
         backgroundColor: '#FFF',
